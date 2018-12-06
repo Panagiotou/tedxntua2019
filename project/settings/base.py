@@ -7,7 +7,7 @@ from .env import env_bool, env_list, env_setting, abs_path, env_str
 DEBUG = env_bool('DEBUG', False)
 ALLOWED_HOSTS = env_list('ALLOWED_HOSTS', ['*'] if DEBUG else [])
 SECRET_KEY = env_str('SECRET_KEY', 'secret' if DEBUG else '')
-
+SITE_ID = 1
 
 # Application definition
 
@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 ]
 
 MIDDLEWARE = [
@@ -35,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 TEMPLATES = [
