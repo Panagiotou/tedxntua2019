@@ -15,8 +15,10 @@ Including another URLconf
 '''
 from django.contrib import admin
 from django.urls import path, include
+from project.program.views import SpeakersView
 
 urlpatterns = [
+    path('speakers/', SpeakersView.as_view(), name='speakers'),
     path('admin/', admin.site.urls),
     path('contact/', include('project.contact.urls')),
     path('', include('project.home.urls'))
