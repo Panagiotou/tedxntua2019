@@ -4,7 +4,7 @@ from .models import Presenter
 
 class SpeakersView(View):
 
-    template = '../templates/program/speakers/speakers.html'
+    template = '../templates/program/speakers.html'
 
     def get(self, request, *args, **kwargs):
         PresenterList = Presenter.speakers.all()
