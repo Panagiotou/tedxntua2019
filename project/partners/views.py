@@ -4,8 +4,8 @@ from .models import Partner
 
 class PartnersView(View):
 
-    template = '../templates/partners/sponsors.html'
+    template = '../templates/partners/partners.html'
 
     def get(self, request, *args, **kwargs):
-        PartnerList = Partner.objects.all()
-        return render(request, self.template, {'Partners': PartnerList})
+        partners = Partner.objects.all()
+        return render(request, self.template, {'partners': partners})
