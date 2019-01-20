@@ -4,7 +4,7 @@ from .models import Partner
 
 class PartnersView(View):
 
-    template = '../templates/partners/partners.html'
+    template = 'partners.html'
 
     def get(self, request, *args, **kwargs):
         partners = Partner.objects.all()
