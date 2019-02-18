@@ -13,7 +13,7 @@ function polylineToPath() {
           path.setAttribute('id', 'p');
           //path.setAttribute('stroke-width', polylines[i].getAttribute('stroke-width'));
           path.setAttribute('stroke-width', 0.5);
-          path.setAttribute('stroke', "black");
+          path.setAttribute('stroke',  "black");
           path.setAttribute('fill', polylines[i].getAttribute('fill'));
           path.setAttribute('fill-opacity', "0");
           var len = path.getTotalLength();
@@ -35,8 +35,8 @@ function polylineToPath() {
           path.setAttribute('d', 'M' + coords);
           path.setAttribute('id', 'p');
           path.setAttribute('stroke-width', 0.5);
-          path.setAttribute('stroke', "black");
-          path.setAttribute('fill', polylines[i].getAttribute('fill'));
+          path.setAttribute('stroke',  "black");
+          path.setAttribute('fill', polygons[i].getAttribute('fill'));
           path.setAttribute('fill-opacity', "0");
           var len = path.getTotalLength();
           if(len > maxlen){
@@ -111,9 +111,11 @@ function polylineToPath() {
     setTimeout(function(){
       var paths = document.querySelectorAll('path');
       for (i = 0; i < paths.length; ++i) {
-        if(paths[i].getAttribute('fill') == "#F69891"){
+        /*if(paths[i].getAttribute('fill') == "#F69891"){
           appear(paths[i], 0, 2, 50);
         }
+        */
+        appear(paths[i], 0, 2, 50);
       }
     }, seconds*1000/2);
   }
