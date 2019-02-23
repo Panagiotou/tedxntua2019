@@ -1,8 +1,7 @@
-  const seconds = 2;
-  const start_delay = 0.3;
-  const transition = "ease-in";
+  const seconds = 3;
+  const transition = "linear";
   const max_lines = 50;
-function polylineToPath() {
+function animate_paths() {
           var paths = document.querySelectorAll('path');
           var TotalLengths = new Array(max_lines).fill(0); // TotalLength of line
           var allLines = 0;
@@ -25,7 +24,6 @@ function polylineToPath() {
             }
           }
           // Set transition delay for each path
-          // Line
           for(line=0; line <=allLines ; line++ ){
             var ttw = 0;
             for (i = 0; i <=groups[line]; ++i) {
@@ -45,8 +43,8 @@ function polylineToPath() {
     function animate(TotalLengths) {
       var paths = document.querySelectorAll('path');
       for (i = 0; i < paths.length; ++i) {
-          // Set up the starting positions
           var length = paths[i].getTotalLength();
+          // Set up the starting positions
           paths[i].style.strokeDasharray = length + ' ' + length;
           paths[i].style.strokeDashoffset = length;
           // Trigger a layout so styles are calculated & the browser
@@ -54,8 +52,8 @@ function polylineToPath() {
           paths[i].getBoundingClientRect();
           // Define our transition
           var li = paths[i].getAttribute('l');
-          var total = TotalLengths[li]; // Get TotalLength of my line
-          time_to_excecute = (length/total)*seconds;
+          var total = TotalLengths[li]; // Get TotalLength of current paths, line
+          time_to_excecute = (length/total)*seconds; // paths animation duration
           paths[i].style['transition-property'] = 'stroke-dashoffset';
           paths[i].style['transition-duration'] = time_to_excecute + "s";
           paths[i].style['transition-timing-function'] = transition;
@@ -63,4 +61,4 @@ function polylineToPath() {
           paths[i].style.strokeDashoffset = '0';
         }
     }
-    polylineToPath();
+    animate_paths();
